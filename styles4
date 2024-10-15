@@ -1,0 +1,275 @@
+/* Basic Reset */
+/* Resets default spacing for all elements by removing margins and padding. 
+   Sets box-sizing to border-box, which includes padding and borders within 
+   element widths, and applies the Arial font to all text. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+/* Sets the background color, text color, and layout for the body. 
+   The display: flex makes the body a flex container, with content 
+   aligned at the center both vertically and horizontally. */
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+/* Creates a full-width white header with padding at the top and bottom, 
+   and a shadow for a subtle 3D effect. */
+header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Top Bar */
+/* Styles the top section of the header using flex layout for 
+   horizontal alignment, adding padding and setting text color. */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    font-size: 0.9em;
+    color: #777;
+    align-items: center;
+}
+
+/* Header Content */
+/* Aligns the header content (e.g., logo and navigation) horizontally 
+   and spaces items with padding. */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Header Title */
+/* Styles the main title within the header with larger font size and bold text. */
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Subscribe/Login Button */
+/* Styles buttons with a red background and white text, adding padding, 
+   rounded corners, and a cursor pointer. Changes color on hover. */
+.subscribe-login button {
+    background-color: #a90f0f;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe-login button:hover {
+    background-color: #8b0d0d;
+}
+
+/* Navigation */
+/* Defines a full-width navigation bar with borders on top and bottom, 
+   flex layout for horizontal alignment, and padding for spacing. */
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Navigation List */
+/* Removes bullets from the list items and arranges them horizontally with spacing. */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+/* Navigation Links */
+/* Styles navigation links with bold text and removes underlines. */
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Search Input */
+/* Adds padding and border styling to the search input field. */
+.search input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Score Section Container */
+/* Adds padding, a light background color, and centers text in the score section. */
+.score-section {
+    padding: 20px;
+    background-color: #f5f5f5;
+    width: 100%;
+    text-align: center;
+}
+
+/* Score Header */
+/* Aligns score header buttons centrally with space between them. */
+.score-header {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Score Button Styles */
+/* Styles score and date buttons with borders, rounded corners, padding, 
+   and a clickable appearance. */
+.score-header .score-button,
+.score-header .date-button,
+.score-header .all-scores {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.score-header .all-scores {
+    background: none;
+    border: none;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Score Cards Layout */
+/* Arranges score cards in a flex layout with wrapping and spaces between cards. */
+.score-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Individual Score Card */
+/* Styles individual score cards with a border, rounded corners, padding, 
+   white background, and box shadow for a card-like appearance. */
+.score-card {
+    width: 150px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #ffffff;
+    text-align: left;
+    font-size: 0.9em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Final Score Label */
+/* Styles final score label with smaller font size and lighter color. */
+.score-card .final {
+    font-size: 0.75em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+/* Score Card Paragraph */
+/* Adds margin for spacing within each paragraph inside score cards. */
+.score-card p {
+    margin: 5px 0;
+}
+
+/* Score Value */
+/* Styles the main score value with larger font size and bold text, 
+   floating it to the right for alignment. */
+.score-card .score {
+    float: right;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Gallery */
+/* Defines a full-width gallery section with a white background, centered content, 
+   padding, and box shadow for a raised effect. */
+.gallery {
+    width: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Gallery Title */
+/* Sets a larger font size for the gallery heading and adds margin for spacing. */
+.gallery h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* Gallery Images */
+/* Constrains images within a maximum width, applies rounded corners, 
+   and adds a box shadow for a polished look. */
+.image-gallery img {
+    width: auto;
+    max-width: 700px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+/* Styles the footer with a background, centered text, padding, and 
+   shadow effect to separate it visually from the page content. */
+footer {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Links */
+/* Styles links within the footer with a specific color and underline effect on hover. */
+.footer-links a {
+    color: #777;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Text */
+/* Adjusts font size for text elements in the footer to be smaller. */
+footer p {
+    font-size: 0.8em;
+    margin: 5px 0;
+}
+
+/* Social Icons */
+/* Adds spacing for social media icons in the footer and styles them with a grayscale filter, 
+   which returns to full color on hover. */
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    filter: grayscale(100%);
+}
+
+.social-icons img:hover {
+    filter: grayscale(0%);
+}
