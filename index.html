@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G984B57MES"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G984B57MES');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gamecocks Gridiron - Your Source for SEC Football Scores & Updates</title>
     <meta name="description" content="Stay updated with Gamecocks Gridiron! Get the latest SEC football news, live scores, stats, and more on South Carolina's Gamecocks." />
     <meta name="keywords" content="Gamecocks, SEC football, South Carolina, Gamecocks scores, college football news, live scores, Gamecocks updates" />
     <meta name="author" content="Gamecocks Gridiron Team" />
-    <link rel="stylesheet" href="styles4.css"> 
+    <link rel="stylesheet" href="styles4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="top-bar">
-            <p>Tuesday, 17 September 2024</p>
-            <p>Columbia 87°F</p>
+            <p id="current-date"></p>
+            <p>Columbia 51°F</p>
         </div>
         <div class="header-content">
             <h1>Gamecocks Gridiron</h1>
@@ -50,51 +42,22 @@
     <!-- Score Section -->
     <section class="score-section">
         <div class="score-header">
-            <button class="score-button">SEC Football Scores ▼</button>
-            <button class="date-button">Today ▼</button>
-            <button class="all-scores">All scores ➔</button>
+            <h2>Live Scores</h2>
         </div>
-        <div class="score-cards">
-            <div class="score-card">
-                <p class="final">FINAL</p>
-                <p><strong>TEX</strong> <span>4-0</span> <span class="score">51</span></p>
-                <p><strong>ULM</strong> <span>2-1</span> <span class="score">3</span></p>
-            </div>
-            <div class="score-card">
-                <p class="final">FINAL</p>
-                <p><strong>MISS</strong> <span>4-0</span> <span class="score">52</span></p>
-                <p><strong>GASO</strong> <span>2-2</span> <span class="score">13</span></p>
-            </div>
-            <div class="score-card">
-                <p class="final">FINAL</p>
-                <p><strong>TENN</strong> <span>4-0</span> <span class="score">25</span></p>
-                <p><strong>OU</strong> <span>3-1</span> <span class="score">15</span></p>
-            </div>
-            <div class="score-card">
-                <p class="final">FINAL</p>
-                <p><strong>MIZ</strong> <span>4-0</span> <span class="score">30</span></p>
-                <p><strong>VAN</strong> <span>2-2</span> <span class="score">27</span></p>
-            </div>
-            <div class="score-card">
-                <p class="final">FINAL</p>
-                <p><strong>LSU</strong> <span>3-1</span> <span class="score">34</span></p>
-                <p><strong>UCLA</strong> <span>1-2</span> <span class="score">17</span></p>
-            </div>
-            <div class="score-card">
-                <p class="final">FINAL</p>
-                <p><strong>SC</strong> <span>3-1</span> <span class="score">50</span></p>
-                <p><strong>AKR</strong> <span>1-3</span> <span class="score">7</span></p>
-            </div>
+        <div class="score-cards" id="score-cards">
+            <!-- Dynamic scores will be added here -->
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery">
-        <h2>Gallery</h2>
-        <div class="image-gallery">
-            <img src="Ashford.png" alt="QB Run" width="100%">
-        </div>
-    </section>
+    </section> 
+        
+   <!-- Gallery Section -->
+<section class="gallery">
+    <div class="image-gallery">
+        <img src="defense.png" alt="Gamecocks Defense in Action" width="100%">
+        <img src="Simon.png" alt="Gamecock Player Running Against Opponent" width="100%">
+        <img src="Sellers.png" alt="QB Run" width="100%">
+        <img src="Sanders.jpg" alt="Raheem Sanders Running" width="100%">
+    </div>
+</section>
 
     <!-- Footer Section -->
     <footer>
@@ -109,10 +72,81 @@
         <p>Copyright © 2024 Gamecocks Gridiron, Inc. All Rights Reserved.</p>
         <p>Use of this website constitutes your acceptance of these <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
         <div class="social-icons">
-            <a href="#"><img src="social1.png" alt="Social Icon"></a>
-            <a href="#"><img src="social2.png" alt="Social Icon"></a>
-            <a href="#"><img src="social3.png" alt="Social Icon"></a>
+            <a href="https://www.instagram.com/gamecockfb/?hl=en" target="_blank">
+                <img src="social1.png" alt="Instagram">
+            </a>
+            <a href="https://x.com/GamecockFB" target="_blank">
+                <img src="social2.png" alt="Twitter">
+            </a>
+            <a href="https://www.facebook.com/GamecockFootball/" target="_blank">
+                <img src="social3.png" alt="Facebook">
+            </a>
         </div>
-    </footer>
+    </footer>    
+
+    <!-- JavaScript -->
+    <script>
+        // Function to fetch and display the current date
+        function updateDate() {
+            const dateElement = document.getElementById('current-date');
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = today.toLocaleDateString('en-US', options);
+        }
+
+        // Function to dynamically fetch and display SEC football scores
+        async function fetchScores() {
+            const API_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard';
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const games = data.events;
+                    updateScoreCards(games);
+                } else {
+                    console.error('Error fetching scores:', response.statusText);
+                    document.getElementById('score-cards').innerHTML = `<p>Error loading scores.</p>`;
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+                document.getElementById('score-cards').innerHTML = `<p>Network error loading scores.</p>`;
+            }
+        }
+
+        // Function to dynamically update the score cards
+        function updateScoreCards(games) {
+            const scoreCardsContainer = document.getElementById('score-cards');
+            scoreCardsContainer.innerHTML = ''; // Clear existing content
+
+            games.forEach(game => {
+                const competition = game.competitions[0];
+                const homeTeam = competition.competitors.find(team => team.homeAway === 'home');
+                const awayTeam = competition.competitors.find(team => team.homeAway === 'away');
+
+                const card = document.createElement('div');
+                card.className = 'score-card';
+                card.innerHTML = `
+                    <p class="final">${competition.status.type.shortDetail}</p>
+                    <p><strong>${homeTeam.team.shortDisplayName}</strong> 
+                       <span>${homeTeam.records ? homeTeam.records[0].summary : ''}</span> 
+                       <span class="score">${homeTeam.score}</span></p>
+                    <p><strong>${awayTeam.team.shortDisplayName}</strong> 
+                       <span>${awayTeam.records ? awayTeam.records[0].summary : ''}</span> 
+                       <span class="score">${awayTeam.score}</span></p>
+                `;
+                scoreCardsContainer.appendChild(card);
+            });
+        }
+
+        // Initialize all functions on page load
+        window.onload = function() {
+            updateDate();
+            fetchScores();
+        };
+
+        // Refresh scores every 5 minutes
+        setInterval(fetchScores, 300000);
+    </script>
 </body>
 </html>
