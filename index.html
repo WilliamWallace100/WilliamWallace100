@@ -96,7 +96,7 @@
 
         // Function to dynamically fetch and display SEC football scores
         async function fetchScores() {
-            const API_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard';
+            const API_URL = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard';
             try {
                 const response = await fetch(API_URL);
                 const data = await response.json();
